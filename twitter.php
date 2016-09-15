@@ -1,0 +1,281 @@
+<?php
+
+require __DIR__ . "/vendor/autoload.php";
+require __DIR__ . "/.conf.php";
+
+use Abraham\TwitterOAuth\TwitterOAuth;
+
+$buzz_words_hashtags = [
+    "reactjs",
+    "angularjs",
+    "paris",
+    "cto",
+    "ruby",
+    "startups",
+    "startup",
+    "leaddev",
+    "datascience",
+    "lean",
+    "agile",
+    "agility",
+    "scrum",
+    "growthhacking",
+    "investor",
+    "investors",
+    "angelinvestor",
+    "uberisation",
+    "disruption",
+    "googleadwords",
+    "npm",
+    "nodejs",
+    "microservice",
+    "scalability",
+    "iot",
+    "frontend",
+    "backend",
+    "frenchtech",
+    "machinelearning",
+    "digital",
+    "marketing",
+    "devops",
+    "ceo",
+    "coo",
+    "cfo",
+    "ai",
+    "generationz",
+    "deeplearning",
+    "mobilegeddon",
+    "smartfactory",
+    "analytics",
+    "googleanalytics",
+    "googleadwords",
+    "seo",
+    "ux",
+    "design",
+    "reactnative",
+    "uxdesign",
+    "css",
+    "encryption",
+    "security",
+    "cryptography",
+    "quantumcomputing",
+    "data",
+    "bigdata",
+    "b2b",
+    "b2c",
+    "cloud",
+    "cloudcomputing",
+    "creativity",
+    "alpha",
+    "innovation",
+    "inovative",
+    "mvp",
+    "entrepreneurship",
+    "entrepreneur",
+    "cofounder",
+    "founder",
+    "foundraise",
+    "roi",
+    "socialize",
+    "web",
+    "foundraise",
+    "strategy",
+    "upselling",
+    "marketplace",
+    "crosssell",
+    "disruptive",
+    "crosssell",
+    "leverage",
+    "growth",
+    "stratcom",
+    "growth",
+    "vr",
+    "drone",
+    "data",
+    "datamining",
+    "bicoin",
+    "mobile first",
+    "responsive",
+    "saas",
+];
+
+
+
+$buzz_words = [
+    "Reactjs",
+    "Angularjs",
+    "Paris",
+    "CTO",
+    "Ruby",
+    "Startups",
+    "Startup",
+    "Lead Dev",
+    "Data Science",
+    "Lean",
+    "Agile",
+    "Agility",
+    "Scrum",
+    "Growth hacking",
+    "Investor",
+    "Investors",
+    "Angel investor",
+    "Uberisation",
+    "Disruption",
+    "Google Adwords",
+    "NPM",
+    "Nodejs",
+    "Microservices",
+    "Scalability",
+    "IoT",
+    "Frontend",
+    "Backend",
+    "French Tech",
+    "Machine lLearning",
+    "Digital",
+    "Marketing",
+    "Devops",
+    "CEO",
+    "COO",
+    "CFO",
+    "AI",
+    "Generation Z",
+    "Deep Learning",
+    "Mobilegeddon",
+    "Smart Factory",
+    "Analytics",
+    "Google Analytics",
+    "Google Adwords",
+    "SEO",
+    "UX",
+    "Design",
+    "React Native",
+    "UXdesign",
+    "CSS",
+    "Encryption",
+    "Security",
+    "Cryptography",
+    "Quantum computing",
+    "Data",
+    "Bigdata",
+    "b2b",
+    "b2c",
+    "Cloud",
+    "Cloud Computing",
+    "Creativity",
+    "Alpha",
+    "Innovation",
+    "Inovative",
+    "MVP",
+    "Entrepreneurship",
+    "Entrepreneur",
+    "Co-founder",
+    "Founder",
+    "Foundraise",
+    "ROI",
+    "Socialize",
+    "Web",
+    "Strategy",
+    "Upselling",
+    "Marketplace",
+    "cross sell",
+    "Disruptive",
+    "Crosssell",
+    "Leverage",
+    "Growth",
+    "Stratcom",
+    "Growth",
+    "VR",
+    "Drone",
+    "Data",
+    "Datamining",
+    "Bicoin",
+    "CMS",
+    "Mobile first",
+    "HTML5",
+    "Responsive",
+    "SaaS",
+];
+
+mt_srand();
+
+
+
+
+$punct = [
+    ".", ";", ".", "!", "...", ".", "?", " :)"
+];
+
+
+$res = "";
+
+$n = mt_rand(2, 4);
+for ($i = 0 ; $i < $n; $i++) {
+
+    $a = $buzz_words_hashtags[mt_rand(0, count($buzz_words_hashtags) -1)];
+    $b = $buzz_words_hashtags[mt_rand(0, count($buzz_words_hashtags) -1)];
+    $c = $buzz_words_hashtags[mt_rand(0, count($buzz_words_hashtags) -1)];
+
+    $d = $buzz_words[mt_rand(0, count($buzz_words) -1)];
+    $e = $buzz_words[mt_rand(0, count($buzz_words) -1)];
+    $f = $buzz_words[mt_rand(0, count($buzz_words) -1)];
+
+    $phrases = [
+        "#$a is the new #$b",
+        "My #$a is #$b",
+        "#$a is so #$b",
+        "#$a > #$b",
+        "#$a and #$b",
+        "#$a or #$b",
+        "Yes",
+        "No",
+        "Why",
+        "Lol",
+        "Still learning #$a",
+        "#$a #$b #$c",
+        "#$a",
+        "#$a is #$b",
+        "So exited by #$b",
+        "Wow: #$a",
+
+
+        "$d is the new $e",
+        "My $d is $e",
+        "$d is so $e",
+        "$d = $e",
+        "$d and $e",
+        "$d or $e",
+        "Still learning $e",
+        "$d",
+        "$d $e",
+        "$d is $e",
+        "$d needs $e",
+        "$d requires $e",
+
+        "Your $d is #$b",
+        "$d is #$b for $e",
+        "$d < #$b",
+        "$d and #$b",
+        "$d or #$b",
+        "More #$b for $e",
+        "$d",
+        "$d #$b",
+        "$d is #$b",
+        "$d needs #$b to success",
+        "$d likes #$b",
+
+        "$d #$a $e",
+        "#$a $d $e",
+        "$d $e #$a",
+        "$d #$a #$b",
+    ];
+
+
+    $res .= $phrases[mt_rand(0, count($phrases) -1)] . $punct[mt_rand(0, count($punct) -1)] . " ";
+}
+$res = trim($res);
+
+echo $res;
+
+
+$connection = new TwitterOAuth($consumer_key, $consumer_secret, $access_token, $access_token_secret);
+$content = $connection->post("statuses/update", ['status' => $res]);

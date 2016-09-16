@@ -97,6 +97,19 @@ $buzz_words_hashtags = [
     "mobile first",
     "responsive",
     "saas",
+    "android",
+    "iphone",
+    "ifttt",
+    "home",
+    "teasing",
+    "bluetooth",
+    "linux",
+    "challenge",
+    "objects",
+    "merci",
+    "web",
+    "gtm",
+    "google",
 ];
 
 
@@ -194,6 +207,15 @@ $buzz_words = [
     "HTML5",
     "Responsive",
     "SaaS",
+    "Android",
+    "Iphone",
+    "IFTTT",
+    "Home",
+    "Web",
+    "GTM",
+    "Challenge",
+    "Communication",
+    "Arduino",
 ];
 
 mt_srand();
@@ -267,6 +289,12 @@ for ($i = 0 ; $i < $n; $i++) {
         "#$a $d $e",
         "$d $e #$a",
         "$d #$a #$b",
+        
+        "$d online",
+        "$d on stage #$a",
+        "$d loves $e",
+        "$d loves $e and $f #$a",
+        "Never $d #$a",
     ];
 
 
